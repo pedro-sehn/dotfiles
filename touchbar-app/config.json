@@ -24,7 +24,7 @@
       "options": {
         "source": "cpu",
         "caption": "CPU",
-        "width": 120,
+        "width": 136,
         "color": "#76FE00",
         "reactive": false
       }
@@ -34,7 +34,7 @@
       "options": {
         "source": "memory",
         "caption": "RAM",
-        "width": 120,
+        "width": 136,
         "color": "#FFD900",
         "reactive": false
       }
@@ -44,7 +44,7 @@
       "options": {
         "source": "network",
         "caption": "NET",
-        "width": 120,
+        "width": 136,
         "color": "#8B2BD9",
         "reactive": false
       }
