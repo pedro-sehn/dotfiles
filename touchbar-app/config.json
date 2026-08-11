@@ -1,0 +1,114 @@
+{
+  "presentOnLaunch": true,
+  "refreshSeconds": 1.0,
+  "controlStripTitle": "☕️",
+  "language": "jp",
+
+  "widgets": [
+    {
+      "type": "clock",
+      "options": {
+        "format": "EEE HH:mm"
+      }
+    },
+
+    {
+      "type": "battery",
+      "options": {
+        "showTime": true
+      }
+    },
+
+    {
+      "type": "graph",
+      "options": {
+        "source": "cpu",
+        "caption": "CPU",
+        "width": 120,
+        "color": "#76FE00",
+        "reactive": false
+      }
+    },
+    {
+      "type": "graph",
+      "options": {
+        "source": "memory",
+        "caption": "RAM",
+        "width": 120,
+        "color": "#FFD900",
+        "reactive": false
+      }
+    },
+    {
+      "type": "graph",
+      "options": {
+        "source": "network",
+        "caption": "NET",
+        "width": 120,
+        "color": "#8B2BD9",
+        "reactive": false
+      }
+    },
+
+    {
+      "type": "group",
+      "id": "tools",
+      "options": {
+        "label": "⚙️",
+        "widgets": [
+          {
+            "type": "shortcut",
+            "id": "screenshot",
+            "options": {
+              "title": "📸",
+              "action": "shell",
+              "command": "screencapture -i ~/Desktop/shot-$(date +%s).png",
+              "longPress": {
+                "action": "shell",
+                "command": "screencapture -W ~/Desktop/window-$(date +%s).png"
+              },
+              "swipeLeft": {
+                "action": "shell",
+                "command": "screencapture ~/Desktop/full-$(date +%s).png"
+              }
+            }
+          },
+          {
+            "type": "shortcut",
+            "id": "lock",
+            "options": {
+              "title": "🔒",
+              "action": "hotkey",
+              "keys": ["ctrl", "cmd", "q"]
+            }
+          },
+          {
+            "type": "toggle",
+            "options": {
+              "target": "caffeinate",
+              "onTitle": "☕️",
+              "offTitle": "💤"
+            }
+          },
+          {
+            "type": "group",
+            "id": "clip",
+            "options": {
+              "label": "📋",
+              "widgets": [
+                {
+                  "type": "clipboard",
+                  "options": {
+                    "capacity": 12,
+                    "cellWidth": 110,
+                    "paste": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

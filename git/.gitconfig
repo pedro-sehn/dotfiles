@@ -1,0 +1,7 @@
+[user]
+	name = Pedro Sehn
+	email = pedroarthursehn@gmail.com
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = false
