@@ -14,6 +14,8 @@ export PATH="$(brew --prefix asdf)/libexec/bin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 . ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 
+alias runback="uv run manage.py runserver 0.0.0.0:8000"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/

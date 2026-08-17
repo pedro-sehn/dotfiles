@@ -2,12 +2,11 @@
 
 macOS (Apple Silicon) developer environment. Configs live here, symlinked into place.
 
-Neovim config is **not** in this repo — it lives in its own repository.
-
 ## Layout
 
 | Path | Symlink target |
 |---|---|
+| `nvim/` | `~/.config/nvim` (whole directory) |
 | `aerospace/.aerospace.toml` | `~/.aerospace.toml` |
 | `zsh/.zshrc` | `~/.zshrc` |
 | `zsh/.zprofile` | `~/.zprofile` |
@@ -15,6 +14,7 @@ Neovim config is **not** in this repo — it lives in its own repository.
 | `git/.gitconfig` | `~/.gitconfig` |
 | `git/ignore` | `~/.config/git/ignore` |
 | `asdf/.tool-versions` | `~/.tool-versions` |
+| `tmux/.tmux.conf` | `~/.tmux.conf` |
 | `opencode/opencode.jsonc` | `~/.config/opencode/opencode.jsonc` |
 | `opencode/package.json` | `~/.config/opencode/package.json` |
 | `claude/settings.json` | `~/.claude/settings.json` |
@@ -84,13 +84,56 @@ Fast recursive grep. Respects `.gitignore` by default.
 
 ### tmux
 Terminal multiplexer — persistent sessions, splits, detach/reattach.
-No custom `~/.tmux.conf` yet; running stock config.
+Config: `tmux/.tmux.conf` → `~/.tmux.conf`. Prefix is stock `Ctrl-b`.
+
+Plugins are managed by **tpm** (tmux plugin manager), cloned to
+`~/.tmux/plugins/tpm` and bootstrapped by the `run` line that must stay at the
+bottom of `.tmux.conf`. tpm is not a brew formula — clone it before first launch:
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux                        # then press: prefix + I
+```
+
+tpm keys (inside tmux):
+
+| Keys | Action |
+|---|---|
+| `prefix + I` | install plugins listed in `.tmux.conf` |
+| `prefix + U` | update plugins |
+| `prefix + Alt-u` | remove plugins no longer listed |
+
+Add a plugin with a `set -g @plugin 'author/name'` line *above* the `run` line,
+then `prefix + I`.
+
+**Installed plugins**
+
+- **tmux-sensible** — small set of uncontroversial default options (faster
+  escape time, bigger history, `prefix + R` to reload the config). No config.
+- **tmux-resurrect** — saves and restores whole sessions across reboots.
+  `prefix + Ctrl-s` saves, `prefix + Ctrl-r` restores. State is written to
+  `~/.local/share/tmux/resurrect/`. Windows, panes, layouts and working
+  directories always come back; running programs only if whitelisted (vim, man,
+  less, … by default — extend with `@resurrect-processes`).
+
+### btop
+Terminal resource monitor — CPU, memory, disk, network, per-process tree with
+mouse support. Run `btop`. Unrelated to tmux, just lives in a pane a lot.
 
 ## Editors & AI agents
 
 ### Neovim
-Installed via brew. **Config lives in a separate repo** (lazy.nvim + telescope +
-rose-pine, leader `,`). Not tracked here.
+Installed via brew. Config tracked here in `nvim/`, symlinked to `~/.config/nvim`.
+lazy.nvim + telescope + rose-pine, leader `,`.
+
+LSP — `nvim/lua/plugins/lsp.lua`: mason installs the servers, `mason-lspconfig`
+auto-enables them via Neovim's native `vim.lsp.enable`.
+- `vtsls` — TypeScript/JS (wraps `tsserver`, the engine VS Code uses)
+- `eslint` — lint diagnostics, `LspEslintFixAll` on save
+
+Keymaps: `K` hover, `gd`/`gr` definitions/references (telescope), `gi`/`gy`
+implementation/type-def, `,rn` rename, `,ca` code action, `,e` float diagnostic,
+`,dl` diagnostics list, `[d`/`]d` prev/next diagnostic.
 
 ### Claude Code
 Anthropic's terminal coding agent (cask `claude-code@latest`).

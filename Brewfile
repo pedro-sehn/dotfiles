@@ -5,6 +5,8 @@ tap "nikitabobko/tap"
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # JPEG image codec that aids compression and decompression
