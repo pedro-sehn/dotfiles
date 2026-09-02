@@ -15,6 +15,9 @@ export PATH="$HOME/.asdf/shims:$PATH"
 . ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 
 alias runback="uv run manage.py runserver 0.0.0.0:8000"
+alias rundtracker="uv run uvicorn main:app --reload --host 127.0.0.1 --port 8080"
+# Run ezplate from any working directory while using the installed Go toolchain.
+alias ezplate='env -u GOROOT -u GOPATH ASDF_GOLANG_VERSION=1.23.6 go -C /Users/macbookbala/desktop/personal/terminal-ezplate run .'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,4 +122,3 @@ export FZF_CTRL_T_OPTS="
  --walker-skip .git,node_modules,target
  --preview 'bat -n --color=always {}'
  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-

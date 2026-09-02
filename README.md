@@ -124,16 +124,24 @@ mouse support. Run `btop`. Unrelated to tmux, just lives in a pane a lot.
 
 ### Neovim
 Installed via brew. Config tracked here in `nvim/`, symlinked to `~/.config/nvim`.
-lazy.nvim + telescope + rose-pine, leader `,`.
+lazy.nvim + telescope + gitsigns + nvim-tree + conform/Prettier + rose-pine,
+leader `,`.
 
 LSP — `nvim/lua/plugins/lsp.lua`: mason installs the servers, `mason-lspconfig`
 auto-enables them via Neovim's native `vim.lsp.enable`.
 - `vtsls` — TypeScript/JS (wraps `tsserver`, the engine VS Code uses)
 - `eslint` — lint diagnostics, `LspEslintFixAll` on save
 
+Check LSP status with `:checkhealth vim.lsp` on Neovim 0.12+.
+
 Keymaps: `K` hover, `gd`/`gr` definitions/references (telescope), `gi`/`gy`
 implementation/type-def, `,rn` rename, `,ca` code action, `,e` float diagnostic,
-`,dl` diagnostics list, `[d`/`]d` prev/next diagnostic.
+`,dl` diagnostics list, `,n` toggle file tree, `,f` format, `[d`/`]d`
+prev/next diagnostic.
+
+Formatting — `conform.nvim` runs Prettier on save for JavaScript/TypeScript,
+JSON, CSS, HTML, YAML, and Markdown. Prettier is installed through Mason.
+Use `:ConformInfo` to inspect formatter availability.
 
 ### Claude Code
 Anthropic's terminal coding agent (cask `claude-code@latest`).
