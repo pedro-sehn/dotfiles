@@ -20,33 +20,60 @@
     },
 
     {
-      "type": "graph",
+      "type": "group",
+      "id": "tools",
       "options": {
-        "source": "cpu",
-        "caption": "CPU",
-        "width": 136,
-        "color": "#76FE00",
-        "reactive": false
+        "label": "📈",
+        "widgets": [
+          {
+            "type": "crypto",
+            "options": { "symbol": "BTC", "currency": "brl" }
+          },
+          {
+            "type": "crypto",
+            "options": { "symbol": "ETH", "currency": "brl" }
+          }
+        ]
       }
     },
+
     {
-      "type": "graph",
+      "type": "group",
+      "id": "tools",
       "options": {
-        "source": "memory",
-        "caption": "RAM",
-        "width": 136,
-        "color": "#FFD900",
-        "reactive": false
-      }
-    },
-    {
-      "type": "graph",
-      "options": {
-        "source": "network",
-        "caption": "NET",
-        "width": 136,
-        "color": "#8B2BD9",
-        "reactive": false
+        "label": "📟",
+        "widgets": [
+          {
+            "type": "graph",
+            "options": {
+              "source": "cpu",
+              "caption": "CPU",
+              "width": 136,
+              "color": "#76FE00",
+              "reactive": false
+            }
+          },
+          {
+            "type": "graph",
+            "options": {
+              "source": "memory",
+              "caption": "RAM",
+              "width": 136,
+              "color": "#FFD900",
+              "reactive": false
+            }
+          },
+          {
+            "type": "graph",
+            "options": {
+              "source": "network",
+              "caption": "NET",
+              "width": 136,
+              "color": "#8B2BD9",
+              "reactive": false
+            }
+          }
+        ]
       }
     },
 
