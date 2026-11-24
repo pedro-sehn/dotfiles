@@ -15,6 +15,51 @@
           "callback_port": 19876,
           "redirect_uri": "http://127.0.0.1:19876/callback"
         }
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "chrome-devtools-mcp@latest",
+          "--autoConnect",
+          "--no-usage-statistics",
+          "--no-performance-crux"
+        ]
+      }
+    },
+    "headroom": {
+      "type": "local",
+      "command": [
+        "/Users/macbookbala/.local/bin/headroom",
+        "mcp",
+        "serve"
+      ],
+      "enabled": true
+    }
+  },
+  "provider": {
+    "headroom": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Headroom Proxy",
+      "options": {
+        "baseURL": "http://127.0.0.1:8787/v1"
+      },
+      "models": {
+        "gpt-4o": {
+          "name": "GPT-4o",
+          "limit": {
+            "context": 128000,
+            "output": 16384
+          }
+        },
+        "gpt-4.1": {
+          "name": "GPT-4.1",
+          "limit": {
+            "context": 1048576,
+            "output": 32768
+          }
+        }
       }
     }
   }
